@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'TTSharedKeychain_Example' do
+  pod 'TTSharedKeychain', :path => '../'
+
+  target 'TTSharedKeychain_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
