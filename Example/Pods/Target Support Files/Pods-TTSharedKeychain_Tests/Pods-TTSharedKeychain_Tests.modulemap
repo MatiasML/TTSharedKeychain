@@ -1,0 +1,6 @@
+framework module Pods_TTSharedKeychain_Tests {
+  umbrella header "Pods-TTSharedKeychain_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

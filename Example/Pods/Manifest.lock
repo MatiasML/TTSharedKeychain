@@ -1,0 +1,16 @@
+PODS:
+  - TTSharedKeychain (0.1.0)
+
+DEPENDENCIES:
+  - TTSharedKeychain (from `../`)
+
+EXTERNAL SOURCES:
+  TTSharedKeychain:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TTSharedKeychain: 97cd4ff3813524fd411ea9a0d32bf222ff7560c1
+
+PODFILE CHECKSUM: a6e31f0ebd28d93af4edfc137bfb44493b594eff
+
+COCOAPODS: 1.8.4

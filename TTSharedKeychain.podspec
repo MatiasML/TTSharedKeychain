@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/matiasspinelli4/TTSharedKeychain'
+  s.homepage         = 'https://github.com/MatiasML/TTSharedKeychain'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'matiasspinelli4' => 'ext_mspinell@mercadolibre.com' }
-  s.source           = { :git => 'https://github.com/matiasspinelli4/TTSharedKeychain.git', :tag => s.version.to_s }
+  s.author           = { 'MatiasML' => 'ext_mspinell@mercadolibre.com' }
+  s.source           = { :git => 'https://github.com/MatiasML/TTSharedKeychain.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'

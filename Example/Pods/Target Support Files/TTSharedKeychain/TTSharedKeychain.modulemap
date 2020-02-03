@@ -1,0 +1,6 @@
+framework module TTSharedKeychain {
+  umbrella header "TTSharedKeychain-umbrella.h"
+
+  export *
+  module * { export * }
+}

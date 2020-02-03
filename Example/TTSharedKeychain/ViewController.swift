@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import TTSharedKeychain
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TTSharedKeychainProtocol {
+    
+    func showAlertFailure() {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+
+        let sharedKeychain = TTSharedKeychainManager(delegate: self)
+        
+        // guardo MI numero de version
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            let appVersionKey = "ExampleVersion"
+            sharedKeychain.save(string: appVersion, forKey: appVersionKey)
+//            TTSharedKeychainManager.shared.save(string: appVersion, forKey: appVersionKey)
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
