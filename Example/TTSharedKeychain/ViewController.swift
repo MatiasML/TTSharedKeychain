@@ -9,25 +9,10 @@
 import UIKit
 import TTSharedKeychain
 
-class ViewController: UIViewController, TTSharedKeychainProtocol {
+class ViewController: UIViewController {
     
-    func showAlertFailure() {
-        
-    }
-    
-
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-
-        let sharedKeychain = TTSharedKeychainManager(delegate: self)
-        
-        // guardo MI numero de version
-        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            let appVersionKey = "ExampleVersion"
-            sharedKeychain.save(string: appVersion, forKey: appVersionKey)
-//            TTSharedKeychainManager.shared.save(string: appVersion, forKey: appVersionKey)
-        }
+        super.viewDidLoad()        
 
     }
 
@@ -36,5 +21,9 @@ class ViewController: UIViewController, TTSharedKeychainProtocol {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func sendAction(_ sender: Any) {
+        let sharedKeychain = TTSharedKeychainManager(delegate: self)
+        sharedKeychain.sendCrossLink(appName: "ThreeKeychain", minVersion: "2.0")
+    }
 }
 

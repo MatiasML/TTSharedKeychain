@@ -22,7 +22,7 @@ pod 'TTSharedKeychain'
 
 ## Author
 
-matiasspinelli4, ext_mspinell@mercadolibre.com
+MatiasML, ext_mspinell@mercadolibre.com
 
 ## License
 

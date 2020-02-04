@@ -21,14 +21,15 @@ public class TTSharedKeychainManager: TTSharedKeychainProtocol {
 //    static let shared = TTSharedKeychainManager()
 //    private init() { }
     
-    var delegate: TTSharedKeychainProtocol
+    var delegate: UIViewController
     
-    public init(delegate: TTSharedKeychainProtocol) {
+    public init(delegate: UIViewController) {
         self.delegate = delegate
 //        super.init()
     }
     
     // MARK: - Public
+    // MARK: - Save
     public func save(string: String, forKey keyValue: String) {
         
         guard let valueData = string.data(using: String.Encoding.utf8) else {
@@ -56,7 +57,7 @@ public class TTSharedKeychainManager: TTSharedKeychainProtocol {
         }
     }
     
-    
+    // MARK: - Get
     public func getStringKey(keyValue: String) -> String? {
 
         let queryLoad: [String: AnyObject] = [
@@ -110,6 +111,7 @@ public class TTSharedKeychainManager: TTSharedKeychainProtocol {
         return nil
     }
     
+    // MARK: - Delete
     public func deleteKey(keyValue: String) {
 
         let queryDelete: [String: AnyObject] = [
@@ -125,8 +127,77 @@ public class TTSharedKeychainManager: TTSharedKeychainProtocol {
         }
     }
     
+    
+    // MARK: - SOME LOGIC
+    /**
+        Un metodo que recibe la app que quiere abrir y el minimo de version
+        Hace el get de la app
+            if ==nil {
+                return showAlertFailure()
+            } esle {
+                Hace el get de la version
+                    if version !> getVersion {
+                        return showAlertFailure()
+                    } else {
+                        return success()
+                    }
+            }
+     
+     */
+    public func sendCrossLink(appName: String, minVersion: String) {
+        
+        var deeplinkString = ""
+        var versionString = ""
+        
+        if appName == "ThreeKeychain" {
+            deeplinkString = "com.mepa://"
+            versionString = "\(appName)Version"
+        }
+        
+        if appName == "TwoKeychain" {
+            deeplinkString = "com.meli://"
+            versionString = "\(appName)Version"
+        }
+        
+        if let appURL = URL(string: deeplinkString) {
+            let canOpen = UIApplication.shared.canOpenURL(appURL)
+            print("Can open \"\(appURL)\": \(canOpen)")
+            // si no puede abrir, guarda el deeplink
+            if !canOpen {
+                self.save(string: deeplinkString, forKey: "deeplinkString")
+                self.showAlert(title: "No se puede abrir MEPA", message: "Se guardo el deeplink en AppGroups")
+            }
+            else {
+                // si lo puede abrir pregunta, valida el numero de version
+                if let threeKeychainVersion = self.getStringKey(keyValue: versionString) {
+                    if threeKeychainVersion >= minVersion {
+                        self.showAlert(title: "Se abre mediante DEEPLINK", message: "")
+                        // si tiene el min de version, manda el deeplink
+                        UIApplication.shared.open(appURL)
+                    } else {
+                        // si no tiene el min de version, guarda el deeplink
+                        self.save(string: deeplinkString, forKey: "deeplinkString")
+                        self.showAlert(title: "No cumple con el minimo de version de MEPA", message: "Se guardo el deeplink en AppGroups")
+                    }
+                } else {
+                    // esto puede suceder si cuenta con una version vieja que no guardo el numero de version de MPEA o simplemente al querer guardarlo, falló.
+                    self.save(string: deeplinkString, forKey: "deeplinkString")
+                    self.showAlert(title: "No tenemos guardado el numero de version de MEPA", message: "Se guardo el deeplink en AppGroups")
+                }
+            }
+        }
+    }
+    
+    public func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+        delegate.present(alert, animated: true, completion: nil)
+    }
+        
     // MARK: - TTSharedKeychainProtocol
     public func showAlertFailure() {
-        
+        let alert = UIAlertController(title: "No se puede abrir MEPA", message: "Se guardo el deeplink en AppGroups", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+        delegate.present(alert, animated: true, completion: nil)
     }
 }

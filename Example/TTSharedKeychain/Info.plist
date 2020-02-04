@@ -30,6 +30,11 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>com.mepa://</string>
+		<string>com.meli://</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
