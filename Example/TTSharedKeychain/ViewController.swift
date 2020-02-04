@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-
+       
+        print(UIApplication.shared)
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +24,7 @@ class ViewController: UIViewController {
 
     @IBAction func sendAction(_ sender: Any) {
         let sharedKeychain = TTSharedKeychainManager(delegate: self)
-        sharedKeychain.sendCrossLink(appName: "ThreeKeychain", minVersion: "2.0")
+        sharedKeychain.sendCrossLink(appName: "ThreeKeychain", minVersion: "1.0")
     }
 }
 

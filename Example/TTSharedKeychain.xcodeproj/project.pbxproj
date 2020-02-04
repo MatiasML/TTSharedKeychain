@@ -42,6 +42,7 @@
 		607FACE51AFB9204008FA782 /* TTSharedKeychain_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTSharedKeychain_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		6617ED0923EA353D002582DE /* TTSharedKeychain_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TTSharedKeychain_Example.entitlements; sourceTree = "<group>"; };
 		74EB4B93FCA109BC675EBD70 /* Pods-TTSharedKeychain_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSharedKeychain_Example.debug.xcconfig"; path = "Target Support Files/Pods-TTSharedKeychain_Example/Pods-TTSharedKeychain_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		77876908AC3857B682023D36 /* Pods_TTSharedKeychain_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTSharedKeychain_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E3737566E540582451A82A /* Pods-TTSharedKeychain_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTSharedKeychain_Tests.release.xcconfig"; path = "Target Support Files/Pods-TTSharedKeychain_Tests/Pods-TTSharedKeychain_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				6617ED0923EA353D002582DE /* TTSharedKeychain_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for TTSharedKeychain */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -212,6 +214,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 752B32KDPY;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -484,6 +487,8 @@
 			baseConfigurationReference = 74EB4B93FCA109BC675EBD70 /* Pods-TTSharedKeychain_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TTSharedKeychain_Example.entitlements;
+				DEVELOPMENT_TEAM = 752B32KDPY;
 				INFOPLIST_FILE = TTSharedKeychain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -499,6 +504,8 @@
 			baseConfigurationReference = E6B3337C1A2C07135113FD5F /* Pods-TTSharedKeychain_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TTSharedKeychain_Example.entitlements;
+				DEVELOPMENT_TEAM = 752B32KDPY;
 				INFOPLIST_FILE = TTSharedKeychain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;

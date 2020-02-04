@@ -1,5 +1,5 @@
 PODS:
-  - TTSharedKeychain (0.1.0)
+  - TTSharedKeychain (0.1.1)
 
 DEPENDENCIES:
   - TTSharedKeychain (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TTSharedKeychain: 97cd4ff3813524fd411ea9a0d32bf222ff7560c1
+  TTSharedKeychain: 6eca3da0208dfa2eb81f7a07e839409ff6bc40f6
 
 PODFILE CHECKSUM: a6e31f0ebd28d93af4edfc137bfb44493b594eff
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.1

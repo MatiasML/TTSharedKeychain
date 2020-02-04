@@ -6,6 +6,5 @@ target 'TTSharedKeychain_Example' do
   target 'TTSharedKeychain_Tests' do
     inherit! :search_paths
 
-    
   end
 end

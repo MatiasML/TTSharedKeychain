@@ -129,21 +129,6 @@ public class TTSharedKeychainManager: TTSharedKeychainProtocol {
     
     
     // MARK: - SOME LOGIC
-    /**
-        Un metodo que recibe la app que quiere abrir y el minimo de version
-        Hace el get de la app
-            if ==nil {
-                return showAlertFailure()
-            } esle {
-                Hace el get de la version
-                    if version !> getVersion {
-                        return showAlertFailure()
-                    } else {
-                        return success()
-                    }
-            }
-     
-     */
     public func sendCrossLink(appName: String, minVersion: String) {
         
         var deeplinkString = ""
@@ -159,7 +144,11 @@ public class TTSharedKeychainManager: TTSharedKeychainProtocol {
             versionString = "\(appName)Version"
         }
         
+        self.deleteKey(keyValue: "deeplinkString")
+
         if let appURL = URL(string: deeplinkString) {
+            print(UIApplication.shared)
+            
             let canOpen = UIApplication.shared.canOpenURL(appURL)
             print("Can open \"\(appURL)\": \(canOpen)")
             // si no puede abrir, guarda el deeplink
