@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func sendAction(_ sender: Any) {
-        let sharedKeychain = TTSharedKeychainManager()
+        let sharedKeychain = TTSharedKeychainManager(delegate: self)
         sharedKeychain.sendCrossLink(appName: "ThreeKeychain", minVersion: "2.0")
     }
 }
